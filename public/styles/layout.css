@@ -4,10 +4,12 @@
  * Do not modify these two selectors, please
  */
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 /*
@@ -15,11 +17,14 @@ html {
  */
 
 body {
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
+	color: #545149;
+	background-color: #f4f1ec;
+	font-size: 24px;
 }
 
 /*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+* Additional CSS can be defined below or in other CSS files, as per instructions
+*/
+body {
+	font-family: "Source sans Pro", sans-serif;
+}
