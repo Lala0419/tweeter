@@ -8,10 +8,12 @@ form {
 	outline: none;
 	background: none;
 	border-bottom: 5px solid #545149;
-	line-height: 0.6;
 	resize: none;
 }
 
+.new-tweet-textarea-label {
+	font-weight: 600;
+}
 .new-tweet-button-box {
 	display: flex;
 	justify-content: space-between;
@@ -27,4 +29,8 @@ form {
 
 .counter {
 	font-family: inherit;
+}
+
+.invalid {
+	color: red;
 }
