@@ -32,6 +32,5 @@ body {
 main {
 	display: block;
 	width: 90%;
-	border: 2px solid red;
 	margin: auto;
 }
