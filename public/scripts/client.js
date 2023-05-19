@@ -4,27 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// //const $tweet = $(`<article class="tweet">Hello world</article>`);
-
-// // Test / driver code (temporary). Eventually will get this from the server.
-// const tweetData = {
-// 	user: {
-// 		name: "Newton",
-// 		avatars: "https://i.imgur.com/73hZDYK.png",
-// 		handle: "@SirIsaac",
-// 	},
-// 	content: {
-// 		text: "If I have seen further it is by standing on the shoulders of giants",
-// 	},
-// 	created_at: 1461116232227,
-// };
-
-// const $tweet = createTweetElement(tweetData);
-
-// // Test / driver code (temporary)
-// console.log($tweet); // to see what it looks like
-// $("#tweets-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
 // Fake data taken from initial-tweets.json
 const data = [
 	{
@@ -51,19 +30,41 @@ const data = [
 	},
 ];
 
+$(document).ready(function () {
+	//target the form element
+	const $form = $("form");
+
+	//add the event listener for submit
+	$form.submit((event) => {
+		event.preventDefault();
+
+		//seriarize the form data
+		const formData = $form.serialize();
+
+		//make a post request to the server
+		$.ajax({
+			url: "http://localhost:8080/tweets",
+			method: "POST",
+			data: formData,
+		});
+		console.log(event);
+		//clear the form inputs
+		$form[0].reset();
+	});
+});
 const renderTweets = function (tweets) {
 	const $tweetsContainer = $("#tweets-container");
 
 	// Clear the container before appending new tweets
 	$tweetsContainer.empty();
 
+	// loops through tweets
 	for (const tweet of tweets) {
+		// calls createTweetElement for each tweet
 		const $tweet = createTweetElement(tweet);
+		// takes return value and appends it to the tweets container
 		$tweetsContainer.append($tweet);
 	}
-	// loops through tweets
-	// calls createTweetElement for each tweet
-	// takes return value and appends it to the tweets container
 };
 
 const createTweetElement = function (tweet) {
