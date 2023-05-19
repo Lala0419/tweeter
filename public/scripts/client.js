@@ -3,11 +3,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+// import { format, render, cancel, register } from "timeago.js";
 
 $(document).ready(function () {
 	//target the form element
 	const $form = $("form");
-
+	// console.log("form: ", timeago);
 	const loadTweets = function () {
 		//make a GET request to the server
 		$.ajax({
@@ -67,8 +68,8 @@ const createTweetElement = function (tweet) {
 	const $content = $("<p>").text(tweet.content.text);
 	const $footer = $("<footer>");
 	const $createdAt = $("<span>")
-		//.text(formatTimestamp(tweet.created_at))
-		.text(tweet.created_at)
+		.text(timeago.format(tweet.created_at, "en_US"))
+		// .text(tweet.created_at)
 		.addClass("date");
 	const $iconContainer = $("<ul>");
 	//const $iconList = $("<li>");
