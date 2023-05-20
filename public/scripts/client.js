@@ -56,22 +56,13 @@ $(document).ready(function () {
 
 		//clear the form inputs
 		$form[0].reset();
+		$(".counter").val(140);
 	});
 
 	// Function to show an error message on the page
 	function showMessage(message) {
-		const $errorMessage = $("<div>").text(message).addClass("invalid");
-		$form.append($errorMessage);
-
-		//remove the message aftere 3 seconds
-		setTimeout(() => {
-			$errorMessage.remove();
-		}, 3000);
-
-		//or disapear when user click the input
-		// $tweetInpit.on("click", () => {
-		// 	$errorMessage.remove();
-		// });
+		const $errorMessage = $("#error");
+		$errorMessage.text(message);
 	}
 });
 const renderTweets = function (tweets) {
