@@ -8,7 +8,7 @@
 $(document).ready(function () {
 	//target the form element
 	const $form = $("form");
-	// console.log("form: ", timeago);
+
 	const loadTweets = function () {
 		//make a GET request to the server
 		$.ajax({
@@ -25,7 +25,23 @@ $(document).ready(function () {
 	$form.submit((event) => {
 		event.preventDefault();
 
-		//seriarize the form data
+		const $tweetInpit = $("#tweet-text");
+		const tweetText = $tweetInpit.val();
+
+		console.log("tweet value: ", tweetText);
+		//If the tweet is empty
+		if (!tweetText) {
+			showMessage("Tweet cannot be empty. Please write something! :)");
+			return; //stop the submission
+		}
+
+		//If tweet exceed 140 char
+		if (tweetText.length > 140) {
+			showMessage("Tweet exceeds 140 characters");
+			return; //stop the submission
+		}
+
+		//if all the validation passes, seriarize the form data
 		const formData = $form.serialize();
 
 		//make a post request to the server
@@ -41,6 +57,22 @@ $(document).ready(function () {
 		//clear the form inputs
 		$form[0].reset();
 	});
+
+	// Function to show an error message on the page
+	function showMessage(message) {
+		const $errorMessage = $("<div>").text(message).addClass("invalid");
+		$form.append($errorMessage);
+
+		//remove the message aftere 3 seconds
+		setTimeout(() => {
+			$errorMessage.remove();
+		}, 3000);
+
+		//or disapear when user click the input
+		// $tweetInpit.on("click", () => {
+		// 	$errorMessage.remove();
+		// });
+	}
 });
 const renderTweets = function (tweets) {
 	const $tweetsContainer = $("#tweets-container");
