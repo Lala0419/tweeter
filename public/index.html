@@ -67,6 +67,19 @@
 		<!-- Page-specific (main) content here -->
 		<main class="container">
 			<section class="new-tweet">
+				<div class="invalid" id="error">
+					<i
+						id="icon"
+						class="fa-solid fa-triangle-exclamation"
+						style="color: #ff0000"
+					></i>
+					<span id="message"></span>
+					<i
+						id="icon"
+						class="fa-solid fa-triangle-exclamation"
+						style="color: #ff0000"
+					></i>
+				</div>
 				<form action="/tweets" method="POST">
 					<label class="new-tweet-textarea-label" for="tweet-text"
 						>What are you humming about?</label
@@ -80,7 +93,6 @@
 						<button type="submit" class="new-tweet-button">Tweet</button>
 						<output name="counter" class="counter" for="tweet-text">140</output>
 					</div>
-					<div class="invalid" id="error"></div>
 				</form>
 			</section>
 			<section id="tweets-container">

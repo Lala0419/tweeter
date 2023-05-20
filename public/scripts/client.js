@@ -31,13 +31,15 @@ $(document).ready(function () {
 		console.log("tweet value: ", tweetText);
 		//If the tweet is empty
 		if (!tweetText) {
-			showMessage("Tweet cannot be empty. Please write something! :)");
+			$("#message").text("Tweet cannot be empty. Please write something! :)");
+			$(".invalid").slideDown();
 			return; //stop the submission
 		}
 
 		//If tweet exceed 140 char
 		if (tweetText.length > 140) {
-			showMessage("Tweet exceeds 140 characters");
+			$("#message").text("Tweet exceeds 140 characters");
+			$(".invalid").slideDown();
 			return; //stop the submission
 		}
 
@@ -53,17 +55,18 @@ $(document).ready(function () {
 			loadTweets();
 		});
 		console.log("event: ", event);
-
 		//clear the form inputs
 		$form[0].reset();
 		$(".counter").val(140);
+		$(".invalid").slideUp();
 	});
 
 	// Function to show an error message on the page
-	function showMessage(message) {
-		const $errorMessage = $("#error");
-		$errorMessage.text(message);
-	}
+	// 	function showMessage(message) {
+	// 		const $errorMessage = $("#error");
+	// 		const $icon = $("#icon");
+	// 		$errorMessage.text(message);
+	// 	}
 });
 const renderTweets = function (tweets) {
 	const $tweetsContainer = $("#tweets-container");

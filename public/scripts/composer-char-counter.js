@@ -3,7 +3,7 @@ $(document).ready(function () {
 	const $textarea = $(".new-tweet-textarea");
 	$textarea.on("input", function (e) {
 		e.preventDefault();
-		$("#error").empty();
+		$(".invalid").slideUp();
 		const $tweetLength = $(this).val().length;
 		const $counter = $(this).next().children(".counter");
 		$counter.text(140 - $tweetLength);

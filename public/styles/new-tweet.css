@@ -32,5 +32,13 @@ form {
 }
 
 .invalid {
+	display: none;
 	color: red;
+	border: 5px solid red;
+	padding: 0.5rem;
+}
+
+#icon {
+	padding: 0 1rem;
+	line-height: 1.5;
 }
