@@ -2,7 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1,  maximum-scale=1.0"
+		/>
 		<!-- Meta Information -->
 		<title>Tweeter - Home Page</title>
 
@@ -58,50 +61,53 @@
 				<i class="fa-solid fa-angles-down"></i>
 			</div>
 		</nav>
-		<header>
-			<img src="./images/profile-hex.png" />
+		<div id="features">
+			<header>
+				<img src="./images/profile-hex.png" />
 
-			<h2>Your Name</h2>
-		</header>
+				<h2>Your Name</h2>
+			</header>
 
-		<!-- Page-specific (main) content here -->
-		<main class="container">
-			<section class="new-tweet">
-				<div class="invalid" id="error">
-					<i
-						id="icon"
-						class="fa-solid fa-triangle-exclamation"
-						style="color: #ff0000"
-					></i>
-					<span id="message"></span>
-					<i
-						id="icon"
-						class="fa-solid fa-triangle-exclamation"
-						style="color: #ff0000"
-					></i>
-				</div>
-				<form action="/tweets" method="POST">
-					<label class="new-tweet-textarea-label" for="tweet-text"
-						>What are you humming about?</label
-					>
-					<textarea
-						class="new-tweet-textarea"
-						name="text"
-						id="tweet-text"
-					></textarea>
-					<div class="new-tweet-button-box">
-						<button type="submit" class="new-tweet-button">Tweet</button>
-						<output name="counter" class="counter" for="tweet-text">140</output>
+			<!-- Page-specific (main) content here -->
+			<main class="container">
+				<section class="new-tweet">
+					<div class="invalid" id="error">
+						<i
+							id="icon"
+							class="fa-solid fa-triangle-exclamation"
+							style="color: #ff0000"
+						></i>
+						<span id="message"></span>
+						<i
+							id="icon"
+							class="fa-solid fa-triangle-exclamation"
+							style="color: #ff0000"
+						></i>
 					</div>
-				</form>
-			</section>
-			<section id="tweets-container">
-				<!-- <article>
-					<div class="article-header">
-						<div>
-							<img src="" alt="profile picture" />
-							<h4>Yohei</h4>
+					<form action="/tweets" method="POST">
+						<label class="new-tweet-textarea-label" for="tweet-text"
+							>What are you humming about?</label
+						>
+						<textarea
+							class="new-tweet-textarea"
+							name="text"
+							id="tweet-text"
+						></textarea>
+						<div class="new-tweet-button-box">
+							<button type="submit" class="new-tweet-button">Tweet</button>
+							<output name="counter" class="counter" for="tweet-text"
+								>140</output
+							>
 						</div>
+					</form>
+				</section>
+				<section id="tweets-container">
+					<!-- <article>
+						<div class="article-header">
+							<div>
+								<img src="" alt="profile picture" />
+								<h4>Yohei</h4>
+							</div>
 						<span> @Sirlsaac</span>
 					</div>
 					<p>
@@ -119,7 +125,8 @@
 						</ul>
 					</footer>
 				</article> -->
-			</section>
-		</main>
+				</section>
+			</main>
+		</div>
 	</body>
 </html>
