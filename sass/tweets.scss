@@ -1,7 +1,9 @@
+@import "variables";
+
 article {
 	margin-top: 4rem;
 	border: 5px solid #545149;
-	background-color: #f4f1ec;
+	background-color: $prime-color;
 	padding: 1rem;
 }
 
