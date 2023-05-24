@@ -3,7 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// import { format, render, cancel, register } from "timeago.js";
 
 $(document).ready(function () {
 	//target the form element
@@ -15,7 +14,6 @@ $(document).ready(function () {
 			url: "http://localhost:8080/tweets",
 			method: "GET",
 		}).then((res) => {
-			console.log("successful: ", res);
 			renderTweets(res);
 		});
 	};
@@ -28,7 +26,6 @@ $(document).ready(function () {
 		const $tweetInpit = $("#tweet-text");
 		const tweetText = $tweetInpit.val();
 
-		console.log("tweet value: ", tweetText);
 		//If the tweet is empty
 		if (!tweetText) {
 			$("#message").text("Tweet cannot be empty. Please write something! :)");
@@ -54,19 +51,12 @@ $(document).ready(function () {
 		}).then(() => {
 			loadTweets();
 		});
-		console.log("event: ", event);
+
 		//clear the form inputs
 		$form[0].reset();
 		$(".counter").val(140);
 		$(".invalid").slideUp();
 	});
-
-	// Function to show an error message on the page
-	// 	function showMessage(message) {
-	// 		const $errorMessage = $("#error");
-	// 		const $icon = $("#icon");
-	// 		$errorMessage.text(message);
-	// 	}
 });
 const renderTweets = function (tweets) {
 	const $tweetsContainer = $("#tweets-container");
@@ -95,19 +85,13 @@ const createTweetElement = function (tweet) {
 	const $footer = $("<footer>");
 	const $createdAt = $("<span>")
 		.text(timeago.format(tweet.created_at, "en_US"))
-		// .text(tweet.created_at)
 		.addClass("date");
 	const $iconContainer = $("<ul>");
-	//const $iconList = $("<li>");
+
 	const $flag = $("<i>").addClass("fa-sharp fa-solid fa-flag");
 	const $retweet = $("<i>").addClass("fa-sharp fa-solid fa-retweet");
 	const $heart = $("<i>").addClass("fa-solid fa-heart");
 
-	// Append the elements to the tweet container
-	// $iconList.append($flag);
-	// $iconList.append($retweet);
-	// $iconList.append($heart);
-	// $iconContainer.append($iconList);
 	$iconContainer.append(
 		$("<li>").append($flag),
 		$("<li>").append($retweet),
