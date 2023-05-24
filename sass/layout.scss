@@ -4,6 +4,7 @@
  * Do not modify these two selectors, please
  */
 
+@use "breakpoints" as breakpoints;
 @import "variables";
 
 html {
@@ -37,4 +38,19 @@ main {
 	width: 90%;
 	margin: auto;
 	padding-top: 2rem;
+
+	@include breakpoints.medium {
+		padding-top: 0;
+	}
+}
+
+#features {
+	display: block;
+
+	@include breakpoints.medium {
+		display: flex;
+		justify-content: center;
+		padding: 5rem 2rem 0;
+		gap: 6rem;
+	}
 }

@@ -1,3 +1,5 @@
+/* media query for tablet */
+/* media query for high pixel density devices */
 /*
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  * https://css-tricks.com/international-box-sizing-awareness-day/
@@ -34,4 +36,21 @@ main {
   width: 90%;
   margin: auto;
   padding-top: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  main {
+    padding-top: 0;
+  }
+}
+
+#features {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  #features {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 2rem 0;
+    gap: 6rem;
+  }
 }
