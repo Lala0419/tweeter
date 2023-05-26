@@ -3,67 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-$(document).ready(function () {
-	//target the form element
-	const $form = $("form");
-
-	const loadTweets = function () {
-		//make a GET request to the server
-		$.ajax({
-			url: "http://localhost:8080/tweets",
-			method: "GET",
-			success: (res) => {
-				renderTweets(res);
-			},
-			error: (error) => {
-				console.log("Error reading data:", error);
-			},
-		});
-	};
-	loadTweets();
-
-	//add the event listener for submit
-	$form.submit((event) => {
-		event.preventDefault();
-
-		const $tweetInpit = $("#tweet-text");
-		const tweetText = $tweetInpit.val();
-
-		if (!tweetText) {
-			$("#message").text("Tweet cannot be empty. Please write something! :)");
-			$(".invalid").slideDown();
-			return; //stop the submission
-		}
-
-		if (tweetText.length > 140) {
-			$("#message").text("Tweet exceeds 140 characters");
-			$(".invalid").slideDown();
-			return; //stop the submission
-		}
-
-		//if all the validation passes, seriarize the form data
-		const formData = $form.serialize();
-
-		//make a post request to the server
-		$.ajax({
-			url: "http://localhost:8080/tweets",
-			method: "POST",
-			data: formData,
-			success: () => {
-				loadTweets();
-			},
-			error: (error) => {
-				console.log("Error sending data:", error);
-			},
-		});
-
-		//clear the form inputs
-		$form[0].reset();
-		$(".counter").val(140);
-		$(".invalid").slideUp();
-	});
-});
 const renderTweets = function (tweets) {
 	const $tweetsContainer = $("#tweets-container");
 
@@ -110,3 +49,63 @@ const createTweetElement = function (tweet) {
 
 	return $tweet;
 };
+
+$(document).ready(function () {
+	//target the form element
+	const $form = $("form");
+
+	const loadTweets = function () {
+		//make a GET request to the server
+		$.ajax({
+			url: "http://localhost:8080/tweets",
+			method: "GET",
+			success: (res) => {
+				renderTweets(res);
+			},
+			error: (error) => {
+				console.log("Error reading data:", error);
+			},
+		});
+	};
+	loadTweets();
+
+	//add the event listener for submit
+	$form.submit((event) => {
+		event.preventDefault();
+
+		const $tweetInpit = $("#tweet-text");
+		const tweetText = $tweetInpit.val();
+		//if all the validation passes, seriarize the form data
+		const formData = $form.serialize();
+
+		if (!tweetText) {
+			$("#message").text("Tweet cannot be empty. Please write something! :)");
+			$(".invalid").slideDown();
+			return; //stop the submission
+		}
+
+		if (tweetText.length > 140) {
+			$("#message").text("Tweet exceeds 140 characters");
+			$(".invalid").slideDown();
+			return; //stop the submission
+		}
+
+		//make a post request to the server
+		$.ajax({
+			url: "http://localhost:8080/tweets",
+			method: "POST",
+			data: formData,
+			success: () => {
+				loadTweets();
+			},
+			error: (error) => {
+				console.log("Error sending data:", error);
+			},
+		});
+
+		//clear the form inputs
+		$form[0].reset();
+		$(".counter").val(140);
+		$(".invalid").slideUp();
+	});
+});
