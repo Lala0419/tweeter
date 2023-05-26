@@ -8,9 +8,9 @@ $(document).ready(function () {
 		const $counter = $(this).next().children(".counter");
 		$counter.text(140 - $tweetLength);
 		if ($tweetLength > 140) {
-			$counter.addClass("invalid");
+			$counter.addClass("error");
 		} else {
-			$counter.removeClass("invalid");
+			$counter.removeClass("error");
 		}
 	});
 });
