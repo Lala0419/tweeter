@@ -13,8 +13,12 @@ $(document).ready(function () {
 		$.ajax({
 			url: "http://localhost:8080/tweets",
 			method: "GET",
-		}).then((res) => {
-			renderTweets(res);
+			success: (res) => {
+				renderTweets(res);
+			},
+			error: (error) => {
+				console.log("Error reading data:", error);
+			},
 		});
 	};
 	loadTweets();
@@ -46,8 +50,12 @@ $(document).ready(function () {
 			url: "http://localhost:8080/tweets",
 			method: "POST",
 			data: formData,
-		}).then(() => {
-			loadTweets();
+			success: () => {
+				loadTweets();
+			},
+			error: (error) => {
+				console.log("Error sending data:", error);
+			},
 		});
 
 		//clear the form inputs
