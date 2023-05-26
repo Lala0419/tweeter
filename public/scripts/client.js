@@ -26,14 +26,12 @@ $(document).ready(function () {
 		const $tweetInpit = $("#tweet-text");
 		const tweetText = $tweetInpit.val();
 
-		//If the tweet is empty
 		if (!tweetText) {
 			$("#message").text("Tweet cannot be empty. Please write something! :)");
 			$(".invalid").slideDown();
 			return; //stop the submission
 		}
 
-		//If tweet exceed 140 char
 		if (tweetText.length > 140) {
 			$("#message").text("Tweet exceeds 140 characters");
 			$(".invalid").slideDown();
